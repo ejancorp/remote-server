@@ -1,19 +1,7 @@
 version: "3"
 
 services:
-
-  noip:
-    image: coppit/no-ip:latest
-    volumes:
-      - "/etc/localtime:/etc/localtime:ro"
-      - "/etc/timezone:/etc/timezone:ro"
-      - "noip_conf:/config"
-    environment:
-      USERNAME: ${NOIP_USERNAME}
-      PASSWORD: ${NOIP_PASSWORD}
-      DOMAINS: ${NOIP_DOMAINS}
-      INTERVAL: ${NOIP_INTERVAL}
-
+  
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
