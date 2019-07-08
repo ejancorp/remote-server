@@ -37,7 +37,7 @@ services:
       - NET_ADMIN
     restart: unless-stopped
 
-openhab:
+  openhab:
     image: "openhab/openhab:2.4.0"
     restart: unless-stopped
     network_mode: host
