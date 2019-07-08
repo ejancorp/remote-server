@@ -1,6 +1,19 @@
 version: "3"
 
 services:
+
+  noip:
+    image: coppit/no-ip:latest
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "noip_conf:/config"
+    environment:
+      USERNAME: ${NOIP_USERNAME}
+      PASSWORD: ${NOIP_PASSWORD}
+      DOMAINS: ${NOIP_DOMAINS}
+      INTERVAL: ${NOIP_INTERVAL}
+
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
@@ -40,6 +53,8 @@ openhab:
       EXTRA_JAVA_OPTS: "-Duser.timezone=Asia/Dubai"
 
 volumes:
+  noip_conf:
+    driver: local
   openhab_addons:
     driver: local
   openhab_conf:
